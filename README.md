@@ -42,6 +42,12 @@ For a new Supabase project, open **Supabase → SQL Editor** and run the project
 
 Run each migration once, in full. The second migration depends on the tables and functions created by the first. Do not use `schema.sql` as a migration; it is a schema reference, not an executable migration. The migrations create the app's tables, row-level security policies, and gradebook view.
 
+### Optional demo data
+
+After both migrations have run, you can run `supabase/demo_seed.sql` in the SQL Editor to add sample courses, enrollments, announcements, assignments, quiz questions and attempts, class chat messages, and complaints. The seed reuses existing profiles (preferring accounts already assigned the relevant roles) and does not create Auth users or change profiles or roles. At least one account/profile must already exist.
+
+The seed does not add resource rows because downloadable materials need real files in the `lms` Storage bucket. Upload sample files from a course's Materials tab instead. It also leaves the audit log untouched so demo activity is not recorded as real administrative activity.
+
 ## Create the first administrator
 
 Public signup is disabled. To bootstrap the first admin, first create your own account in **Supabase → Authentication → Users**. Then run this in the SQL Editor, replacing the email and name with your account details:
@@ -90,3 +96,4 @@ npm run build
 npm run lint
 npm test
 ```
+"# GU-Tech-Portal-LMS" 
